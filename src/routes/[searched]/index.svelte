@@ -12,6 +12,7 @@
       const itunesSearched = await fetch(`https://itunes.apple.com/search?term=${searched}&entity=song`);
     let res = await itunesSearched.json();
     songResults = res.results;
+    console.log(songResults)
     if (songResults.length === null || songResults.length === 0) {
       throw Error
     }
@@ -31,33 +32,48 @@
 </svelte:head>
 
 {#if errorMessage}
-<h1 class="text-4xl text-center mb-12">Sorry, there are no songs listed for {$page.params.searched}</h1>
+<h1 class="text-4xl text-center mb-12">Sorry, there are no songs listed for <span class="text-[#fc8ea0]">{$page.params.searched}</span></h1>
 <div class="mb-7 ml-5">
   <a  href='/'>← Back to home</a>
 </div>
 {:else}
-<h1 class="text-4xl text-center mb-4">Songs by or featuring {$page.params.searched}</h1>
+<h1 class="text-4xl text-center mb-4">Songs by or featuring <span class="text-[#fc8ea0]">{$page.params.searched}</span></h1>
 <div class="mb-7 ml-5">
   <a  href='/'>← Back to home</a>
 </div>     
 {/if}
-<div class="grid grid-cols-2 md:grid-cols-3 grod-flow row gap-3">
-  {#if !errorMessage}
-    {#each songResults as song}
-   <a  href={`${$page.params.searched}/${song.trackId}`} class="p-3 flex bg-white rounded-md bg-opacity-20 border-2 border-white border-opacity-30">
-     <img width={45} height={45} src={song.artworkUrl100} alt="img" class=" mr-4 object-contain">
-     <div class="flex flex-col items-start text-left">
-       <div class="mb-2 h-6 overflow-hidden">{song.trackName}</div>
-       <div class="text-xs font-bold">{song.artistName}</div>
-     </div>
-   </a>
-   {/each}
-  {/if}
-  
- </div>
 
+ <div class="container px-5 mx-auto">
+  <div class="flex flex-wrap -m-4">
+
+{#if !errorMessage}
+{#each songResults as song}
+<div class="p-4 w-full md:w-1/2" >
+<div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+<div class="w-full">
+    <div class="w-full flex p-2">
+        <div class="p-2 ">
+          <img 
+        
+           src={song.artworkUrl100} alt="img"
+            class="w-10 h-10 overflow-hidden"/>
+        </div>
+        <div class="pl-2  ">
+          <a  href={`${$page.params.searched}/${song.trackId}`} class=" text-sm">{song.trackName}</a>
+          <p class="text-xs font-bold mt-1 mb-2">{song.artistName}</p>
+        </div>
+      </div>
+</div>
+</div>
+</div>
+{/each}
+{/if}
+
+  </div>
+</div>
 
 
 <style>
    
 </style>
+

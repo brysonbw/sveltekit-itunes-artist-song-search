@@ -34,7 +34,7 @@
     <div class="">
      <!----Search --->
      <div  class="m-4  flex">
-       <input bind:value={searched}  class="rounded-l-lg p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white w-full" placeholder="Enter artist name"/>
+       <input bind:value={searched}  class="rounded-l-lg p-4 border-t mr-0 border-b border-l  text-gray-800 border-gray-200 focus:outline-none  bg-white w-full" placeholder="Enter artist name"/>
        <button on:click|preventDefault={search} class="md:px-8 rounded-r-lg bg-[#fc8ea0]  text-black font-bold p-4 uppercase  border-b border-r">Search</button>
    </div>
 
