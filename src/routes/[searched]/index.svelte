@@ -45,7 +45,7 @@
   {#if !errorMessage}
     {#each songResults as song}
    <a  href={`${$page.params.searched}/${song.trackId}`} class="p-3 flex bg-white rounded-md bg-opacity-20 border-2 border-white border-opacity-30">
-     <img src={song.artworkUrl100} alt="img" class="rounded-md mr-4 w-1/4">
+     <img width={45} height={45} src={song.artworkUrl100} alt="img" class=" mr-4 object-contain">
      <div class="flex flex-col items-start text-left">
        <div class="mb-2 h-6 overflow-hidden">{song.trackName}</div>
        <div class="text-xs font-bold">{song.artistName}</div>
