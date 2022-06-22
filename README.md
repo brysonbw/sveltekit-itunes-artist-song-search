@@ -1,6 +1,6 @@
 # Svelte iTunes Artist Song Search
-- anonymous users can read/search 50 artist's songs 
-- anonymous users can read detailed song and play song preview
+- Anonymous users can read/search 50 artist's songs 
+- Anonymous users can read detailed song and play song preview
 
 ## Technologies
 - Svelte/Sveltekit
